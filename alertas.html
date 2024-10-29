@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alertas - Dispensador de Agua</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <!-- Contenedor para la Navbar -->
+
+    <script>
+      // Cargar la navbar desde el archivo navbar.html
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+    </script>
+
+    <header class="header">
+      <h1>Alertas</h1>
+    </header>
+
+    <!-- Contenedor de alertas -->
+    <div class="container">
+      <!-- Ejemplo de alertas -->
+      <div class="alert alert-warning">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <p>
+          <strong>Próximo Cambio de Filtro:</strong> El dispensador 1 necesitará
+          cambio de filtro próximamente.
+        </p>
+      </div>
+
+      <div class="alert alert-danger">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <p>
+          <strong>Error:</strong> Se ha detectado un fallo en el dispensador 3.
+        </p>
+      </div>
+
+      <div class="alert alert-info">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <p>
+          <strong>Consumo Diario:</strong> Hoy se han consumido un total de 900
+          litros.
+        </p>
+      </div>
+
+      <div class="alert alert-success">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          viewBox="0 0 24 24">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8.5 11.5L11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <p>
+          <strong>Éxito:</strong> El filtro del dispensador 1 ha sido cambiado
+          con éxito.
+        </p>
+      </div>
+    </div>
+
+    <style>
+      /* Estilos generales */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        padding-bottom: 60px;
+      }
+
+      .container {
+        padding: 20px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      /* Estilos para las alertas */
+      .alert {
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-size: 16px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .alert svg {
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+
+      .alert-warning {
+        background-color: #ff9800; /* Naranja */
+      }
+
+      .alert-danger {
+        background-color: #f44336; /* Rojo */
+      }
+
+      .alert-info {
+        background-color: #2196f3; /* Azul */
+      }
+
+      .alert-success {
+        background-color: #4caf50; /* Verde */
+      }
+
+      .header {
+        background-color: #023e8a; /* Color azul de la barra superior */
+        padding: 20px 0; /* Espaciado arriba y abajo */
+        text-align: center; /* Centra el contenido */
+        position: relative; /* Para el posicionamiento del logo */
+        border-radius: 0px 0px 10px 10px;
+        color: white;
+      }
+
+      .header h1 {
+        font-weight: 100;
+      }
+    </style>
+  </body>
+</html>

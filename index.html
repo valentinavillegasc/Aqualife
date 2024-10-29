@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio - Dispensador de Agua</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <!-- Contenedor para la Navbar -->
+
+    <script>
+      // Cargar la navbar desde el archivo navbar.html
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+    </script>
+    <header class="header">
+      <img src="imgs/aqualife2.png" alt="logo-aquaLife" class="logo-aquaLife" />
+    </header>
+    <!-- Contenedor de inicio -->
+    <div class="container">
+      <img
+        src="imgs/inicio.png"
+        alt="Imagen de fondo"
+        class="background-image" />
+    </div>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5; /* Color de fondo de la página */
+      }
+
+      .header {
+        background-color: #023e8a; /* Color azul de la barra superior */
+        padding: 20px 0; /* Espaciado arriba y abajo */
+        text-align: center; /* Centra el contenido */
+        position: relative; /* Para el posicionamiento del logo */
+        border-radius: 0px 0px 10px 10px;
+      }
+
+      .logo-aquaLife {
+        width: 150px; /* Ajusta el tamaño del logo */
+        max-width: 100%; /* Mantiene la proporción en pantallas más pequeñas */
+      }
+
+      .container {
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+      }
+
+      .background-image {
+        margin: 0;
+        width: 46vh; /* Ajustar la imagen al ancho de la pantalla */
+        height: 85vh; /* Mantener la relación de aspecto */
+      }
+    </style>
+  </body>
+</html>

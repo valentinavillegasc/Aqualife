@@ -1,0 +1,65 @@
+<!-- navbar.html -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <ul id="nav-links" class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="estadisticas.html">Estadísticas</a></li>
+      <li><a href="alertas.html">Alertas</a></li>
+      <li><a href="cuenta.html">Cuenta</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  /* Estilos de la Navbar */
+  .navbar {
+    background-color: #023e8a;
+    padding: 10px;
+    position: fixed; /* Fijo en la parte inferior */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Asegúrate de que esté en la parte superior */
+    border-radius: 10px 10px 0px 0px;
+  }
+
+  .navbar-container {
+    display: flex;
+    justify-content: space-around; /* Espaciado uniforme */
+  }
+
+  .nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between; /* Espaciado uniforme entre los elementos */
+    width: 100%;
+  }
+
+  .nav-links li {
+    flex: 1; /* Cada elemento ocupa el mismo espacio */
+    text-align: center; /* Centrar texto */
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 0; /* Espacio más grande arriba y abajo */
+    font-size: 18px; /* Tamaño de fuente más grande */
+    display: block; /* Para que el área clickeable sea más grande */
+  }
+
+  .nav-links a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  /* Estilos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: row; /* Mantener en fila */
+    }
+  }
+</style>
