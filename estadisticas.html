@@ -29,23 +29,51 @@
       <!-- Menú desplegable para seleccionar fecha -->
       <label for="fecha-select">Selecciona la fecha:</label>
       <select id="fecha-select">
-        <option value="semana1">Semana 1</option>
-        <option value="semana2">Semana 2</option>
-        <option value="semana3">Semana 3</option>
+        <option value="semana1">Semana 4/11 - 9/11</option>
+        <option value="semana2">Semana 28/10 - 2/11</option>
+        <option value="semana3">Semana 21/10 - 26/10</option>
       </select>
 
       <!-- Gráfica de consumo de agua -->
-      <canvas id="grafica"></canvas>
+      <canvas id="grafica" width="1000" height="800"></canvas>
 
-      <!-- Botón para aumentar el consumo del día jueves -->
-      <button id="btn-agregar-agua" class="boton-dispensador">
-        Agregar Agua (Jueves)
-      </button>
+      <div id="total-litros" class="total-litros">Total: 0 L</div>
+
+      <!-- Botones de los dispensadores -->
+      <div class="botones-dispensadores">
+        <button class="boton-dispensador" onclick="mostrarInfo(1)">
+          Dispensador 1
+        </button>
+        <button class="boton-dispensador" onclick="mostrarInfo(2)">
+          Dispensador 2
+        </button>
+        <button class="boton-dispensador" onclick="mostrarInfo(3)">
+          Dispensador 3
+        </button>
+      </div>
+
+      <button id="cambiar-jueves" class="boton-cambiar"></button>
+    </div>
+
+    <!-- Modal para mostrar información del dispensador -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="cerrarModal()">&times;</span>
+        <h2 id="modal-titulo">Información del Dispensador</h2>
+        <p id="modal-ubicacion"></p>
+        <p id="modal-filtro"></p>
+        <p id="modal-mantenimiento"></p>
+        <button
+          id="boton-encendido"
+          class="boton-dispensador"
+          onclick="cambiarEstado()">
+          Encender
+        </button>
+      </div>
     </div>
 
     <script>
-      // Datos iniciales de la gráfica con jueves en 100L
-      const consumoSemanal = [100, 200, 300, 100, 400, 350, 200];
+      const consumoSemanal = [300, 400, 500, 300, 400, 200, 0];
       const labels = [
         "Lunes",
         "Martes",
@@ -76,34 +104,100 @@
           scales: {
             y: {
               beginAtZero: true,
+              max: 500,
               ticks: {
                 stepSize: 100,
-                max: 400, // Límite máximo en el eje y para representar hasta 500L
                 callback: function (value) {
-                  return value + "L";
+                  return value + " L";
+                },
+              },
+              title: {
+                display: true,
+                text: "Litros (L)",
+                font: {
+                  size: 14,
+                  weight: "bold",
                 },
               },
             },
           },
           responsive: true,
-          maintainAspectRatio: false,
         },
       });
 
-      // Evento para el botón "Agregar Agua (Jueves)"
+      function actualizarTotalLitros() {
+        const total = consumoSemanal.reduce((acc, curr) => acc + curr, 0);
+        document.getElementById(
+          "total-litros"
+        ).textContent = `Total: ${total} L`;
+      }
+
+      actualizarTotalLitros();
+
+      // Evento para cambiar el valor del jueves
       document
-        .getElementById("btn-agregar-agua")
+        .getElementById("cambiar-jueves")
         .addEventListener("click", () => {
-          // Incrementar el valor de jueves si es menor que 300L
-          if (consumoSemanal[3] < 300) {
-            consumoSemanal[3] += 100;
-            grafica.update();
-          }
+          consumoSemanal[3] = 350; // Cambia el valor del jueves a 400 L
+          grafica.update(); // Actualiza la gráfica para reflejar el cambio
+          actualizarTotalLitros(); // Actualiza el total de litros
         });
+
+      // Estado de los dispensadores
+      const dispensadores = [
+        { encendido: false, ubicacion: "Canchas", estadoFiltro: "Bueno" },
+        {
+          encendido: false,
+          ubicacion: "Plazoleta Fundadores",
+          estadoFiltro: "Regular",
+        },
+        {
+          encendido: false,
+          ubicacion: "Edificio O",
+          estadoFiltro: "Necesita cambio",
+        },
+      ];
+
+      // Función para mostrar la información del dispensador
+      function mostrarInfo(dispensador) {
+        const info = dispensadores[dispensador - 1];
+
+        document.getElementById(
+          "modal-ubicacion"
+        ).textContent = `Ubicación: ${info.ubicacion}`;
+        document.getElementById(
+          "modal-filtro"
+        ).textContent = `Estado del filtro: ${info.estadoFiltro}`;
+        document.getElementById("modal-mantenimiento").textContent = `Estado: ${
+          info.encendido ? "Encendido" : "Apagado"
+        }`;
+        document.getElementById("boton-encendido").textContent = info.encendido
+          ? "Apagar"
+          : "Encender";
+
+        // Muestra el modal
+        document.getElementById("modal").style.display = "block";
+        document
+          .getElementById("boton-encendido")
+          .setAttribute("data-dispensador", dispensador);
+      }
+
+      // Función para cambiar el estado del dispensador
+      function cambiarEstado() {
+        const dispensador = document
+          .getElementById("boton-encendido")
+          .getAttribute("data-dispensador");
+        dispensadores[dispensador - 1].encendido =
+          !dispensadores[dispensador - 1].encendido;
+        mostrarInfo(dispensador);
+      }
+
+      function cerrarModal() {
+        document.getElementById("modal").style.display = "none";
+      }
     </script>
 
     <style>
-      /* Estilos generales */
       body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -115,19 +209,25 @@
       .container {
         padding: 20px;
         text-align: center;
-        max-width: 800px;
+        max-width: 1000px;
         margin: auto;
       }
 
       h2 {
         font-size: 24px;
-        margin: 20px 0;
+        margin: 20px 0px 20px 0px;
       }
 
       canvas {
         max-width: 100%;
-        height: 400px;
+        height: auto;
         margin-bottom: 20px;
+      }
+
+      #total-litros {
+        font-size: 20px;
+        margin: 10px 0;
+        font-weight: 100;
       }
 
       label {
@@ -140,6 +240,13 @@
         font-size: 16px;
         border-radius: 5px;
         margin-bottom: 20px;
+      }
+
+      .botones-dispensadores {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
       }
 
       .boton-dispensador {
@@ -156,6 +263,21 @@
         background-color: #0056b3;
       }
 
+      .boton-cambiar {
+        padding: 5px 10px;
+        font-size: 14px;
+        background-color: #e0e0e0;
+        color: #333;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .boton-cambiar:hover {
+        background-color: #d0d0d0;
+      }
+
       .header {
         background-color: #023e8a;
         padding: 20px 0;
@@ -166,6 +288,45 @@
 
       .header h1 {
         font-weight: 100;
+      }
+
+      /* Estilos del modal */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        padding-top: 60px;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 60%;
+        text-align: center;
+        border-radius: 10px;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
       }
     </style>
   </body>
