@@ -11,7 +11,6 @@
     <!-- Contenedor para la Navbar -->
 
     <script>
-      // Cargar la navbar desde el archivo navbar.html
       fetch("navbar.html")
         .then((response) => response.text())
         .then((data) => {
@@ -19,10 +18,22 @@
         });
     </script>
 
+    <header class="header">
+      <h1>Cuenta</h1>
+    </header>
+
     <!-- Contenedor de cuenta -->
     <div class="container">
-      <h2>Mi Cuenta</h2>
-      <p>Información de la cuenta y configuraciones.</p>
+      <p>Información de la cuenta</p>
+
+      <!-- Imagen circular -->
+      <div class="image-container">
+        <img
+          src="imgs/logoUEB.jpg"
+          alt="Logo Universidad del Bosque"
+          class="circular-image" />
+        <p class="university-name">Universidad del Bosque</p>
+      </div>
     </div>
 
     <style>
@@ -30,8 +41,8 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f5f5f5; /* Color de fondo de la página */
-        padding-bottom: 60px; /* Espacio para la navbar en la parte inferior */
+        background-color: #f5f5f5;
+        padding-bottom: 60px;
       }
 
       .container {
@@ -40,13 +51,47 @@
       }
 
       h2 {
-        font-size: 24px; /* Tamaño de fuente para el encabezado */
-        margin: 20px 0; /* Margen alrededor del encabezado */
+        font-size: 24px;
+        margin: 20px 0;
       }
 
       p {
-        font-size: 16px; /* Tamaño de fuente para el párrafo */
-        margin: 10px 0; /* Margen alrededor del párrafo */
+        font-size: 16px;
+        margin: 10px 0;
+      }
+
+      .header {
+        background-color: #023e8a;
+        padding: 20px 0;
+        text-align: center;
+        position: relative;
+        border-radius: 0px 0px 10px 10px;
+        color: white;
+      }
+
+      .header h1 {
+        font-weight: 100;
+      }
+
+      /* Estilos para la imagen circular */
+      .image-container {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .circular-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #023e8a;
+      }
+
+      .university-name {
+        margin-top: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #023e8a;
       }
     </style>
   </body>
