@@ -11,7 +11,6 @@
     <div id="navbar"></div>
 
     <script>
-      // Cargar la navbar desde el archivo navbar.html
       fetch("navbar.html")
         .then((response) => response.text())
         .then((data) => {
@@ -26,7 +25,6 @@
     <div class="container">
       <h2>Consumo de Agua Semanal</h2>
 
-      <!-- Menú desplegable para seleccionar fecha -->
       <label for="fecha-select">Selecciona la fecha:</label>
       <select id="fecha-select">
         <option value="semana1">Semana 4/11 - 9/11</option>
@@ -34,12 +32,10 @@
         <option value="semana3">Semana 21/10 - 26/10</option>
       </select>
 
-      <!-- Gráfica de consumo de agua -->
       <canvas id="grafica" width="1000" height="800"></canvas>
 
       <div id="total-litros" class="total-litros">Total: 0 L</div>
 
-      <!-- Botones de los dispensadores -->
       <div class="botones-dispensadores">
         <button class="boton-dispensador" onclick="mostrarInfo(1)">
           Dispensador 1
@@ -55,7 +51,6 @@
       <button id="cambiar-jueves" class="boton-cambiar"></button>
     </div>
 
-    <!-- Modal para mostrar información del dispensador -->
     <div id="modal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="cerrarModal()">&times;</span>
@@ -84,7 +79,6 @@
         "Domingo",
       ];
 
-      // Configuración de la gráfica
       const ctx = document.getElementById("grafica").getContext("2d");
       let grafica = new Chart(ctx, {
         type: "bar",
@@ -134,16 +128,14 @@
 
       actualizarTotalLitros();
 
-      // Evento para cambiar el valor del jueves
       document
         .getElementById("cambiar-jueves")
         .addEventListener("click", () => {
-          consumoSemanal[3] = 350; // Cambia el valor del jueves a 400 L
-          grafica.update(); // Actualiza la gráfica para reflejar el cambio
-          actualizarTotalLitros(); // Actualiza el total de litros
+          consumoSemanal[3] = 350;
+          grafica.update();
+          actualizarTotalLitros();
         });
 
-      // Estado de los dispensadores
       const dispensadores = [
         { encendido: false, ubicacion: "Canchas", estadoFiltro: "Bueno" },
         {
@@ -158,7 +150,6 @@
         },
       ];
 
-      // Función para mostrar la información del dispensador
       function mostrarInfo(dispensador) {
         const info = dispensadores[dispensador - 1];
 
@@ -175,14 +166,12 @@
           ? "Apagar"
           : "Encender";
 
-        // Muestra el modal
         document.getElementById("modal").style.display = "block";
         document
           .getElementById("boton-encendido")
           .setAttribute("data-dispensador", dispensador);
       }
 
-      // Función para cambiar el estado del dispensador
       function cambiarEstado() {
         const dispensador = document
           .getElementById("boton-encendido")
@@ -290,7 +279,6 @@
         font-weight: 100;
       }
 
-      /* Estilos del modal */
       .modal {
         display: none;
         position: fixed;

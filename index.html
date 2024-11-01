@@ -8,10 +8,8 @@
   </head>
   <body>
     <div id="navbar"></div>
-    <!-- Contenedor para la Navbar -->
 
     <script>
-      // Cargar la navbar desde el archivo navbar.html
       fetch("navbar.html")
         .then((response) => response.text())
         .then((data) => {
@@ -21,7 +19,6 @@
     <header class="header">
       <img src="imgs/aqualife2.png" alt="logo-aquaLife" class="logo-aquaLife" />
     </header>
-    <!-- Contenedor de inicio -->
     <div class="container">
       <img
         src="imgs/inicio.png"
@@ -34,20 +31,20 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f5f5f5; /* Color de fondo de la página */
+        background-color: #f5f5f5;
       }
 
       .header {
-        background-color: #023e8a; /* Color azul de la barra superior */
-        padding: 20px 0; /* Espaciado arriba y abajo */
-        text-align: center; /* Centra el contenido */
-        position: relative; /* Para el posicionamiento del logo */
+        background-color: #023e8a;
+        padding: 20px 0;
+        text-align: center;
+        position: relative;
         border-radius: 0px 0px 10px 10px;
       }
 
       .logo-aquaLife {
-        width: 150px; /* Ajusta el tamaño del logo */
-        max-width: 100%; /* Mantiene la proporción en pantallas más pequeñas */
+        width: 150px;
+        max-width: 100%;
       }
 
       .container {
@@ -58,8 +55,8 @@
 
       .background-image {
         margin: 0;
-        width: 46vh; /* Ajustar la imagen al ancho de la pantalla */
-        height: 85vh; /* Mantener la relación de aspecto */
+        width: 46vh;
+        height: 85vh;
       }
     </style>
   </body>
