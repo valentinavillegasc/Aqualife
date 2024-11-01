@@ -3,60 +3,122 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio - Dispensador de Agua</title>
+    <title>Bienvenida - Dispensador de Agua</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="navbar"></div>
-
-    <script>
-      fetch("navbar.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("navbar").innerHTML = data;
-        });
-    </script>
-    <header class="header">
-      <img src="imgs/aqualife2.png" alt="logo-aquaLife" class="logo-aquaLife" />
-    </header>
-    <div class="container">
+    <div class="landing-container">
+      <!-- Logotipo de la aplicación -->
       <img
-        src="imgs/inicio.png"
-        alt="Imagen de fondo"
-        class="background-image" />
+        src="imgs/aquaLife.png"
+        alt="Logo de la Aplicación"
+        class="logo-app" />
+
+      <!-- Botón de inicio -->
+      <button class="inicio-button" onclick="location.href='inicio.html'">
+        Ir al Inicio
+      </button>
+
+      <!-- Texto 'by' y logotipo de los creadores -->
+      <div class="by-creators">
+        <p class="by-text">by</p>
+        <img
+          src="imgs/digitalWave.png"
+          alt="Creadores de la Aplicación"
+          class="creadores" />
+      </div>
     </div>
 
     <style>
+      /* Estilos para la página de bienvenida */
       body {
-        font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f5f5f5;
-      }
-
-      .header {
-        background-color: #023e8a;
-        padding: 20px 0;
-        text-align: center;
-        position: relative;
-        border-radius: 0px 0px 10px 10px;
-      }
-
-      .logo-aquaLife {
-        width: 150px;
-        max-width: 100%;
-      }
-
-      .container {
-        text-align: center;
+        font-family: Arial, sans-serif;
+        background-color: #e3f2fd; /* Fondo suave en azul claro */
+        display: flex;
+        align-items: center;
         justify-content: center;
-        align-content: center;
+        height: 100vh; /* Ajusta a la altura de la ventana */
       }
 
-      .background-image {
-        margin: 0;
-        width: 46vh;
-        height: 85vh;
+      .landing-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+        text-align: center;
+        background-color: white; /* Fondo blanco para el contenido */
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      }
+
+      /* Estilos para el logotipo de la aplicación */
+      .logo-app {
+        width: 70%; /* Ajusta el tamaño del logo para hacerlo más grande */
+        max-width: 400px;
+        margin-bottom: 10px; /* Reduce el margen entre el logo y el botón */
+      }
+
+      /* Estilos para el botón de inicio */
+      .inicio-button {
+        padding: 10px 25px;
+        font-size: 18px;
+        color: #ffffff;
+        background-color: #023e8a;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.2s;
+        margin-top: 10px; /* Espacio pequeño para separarlo del logo */
+      }
+
+      .inicio-button:hover {
+        background-color: #0353a4;
+        transform: scale(1.05);
+      }
+
+      /* Contenedor para el texto 'by' y la imagen de creadores */
+      .by-creators {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      /* Estilos para el texto 'by' */
+      .by-text {
+        font-size: 12px;
+        color: #666666;
+        margin-bottom: -5px; /* Espacio para acercar el texto a la imagen */
+      }
+
+      /* Estilos para la imagen de los creadores */
+      .creadores {
+        width: 70px;
+        max-width: 100%;
+        opacity: 0.7;
+      }
+
+      /* Ajustes de responsividad */
+      @media (max-width: 768px) {
+        .landing-container {
+          height: 90vh;
+          width: 90%;
+          padding: 15px;
+        }
+
+        .logo-app {
+          width: 80%; /* Ajusta el tamaño del logo en pantallas pequeñas */
+        }
+
+        .inicio-button {
+          font-size: 16px;
+          padding: 12px 24px;
+        }
       }
     </style>
   </body>
