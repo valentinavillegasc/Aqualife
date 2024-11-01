@@ -8,18 +8,15 @@
   </head>
   <body>
     <div class="landing-container">
-      <!-- Logotipo de la aplicación -->
       <img
         src="imgs/aquaLife.png"
         alt="Logo de la Aplicación"
         class="logo-app" />
 
-      <!-- Botón de inicio -->
       <button class="inicio-button" onclick="location.href='inicio.html'">
         Ir al Inicio
       </button>
 
-      <!-- Texto 'by' y logotipo de los creadores -->
       <div class="by-creators">
         <p class="by-text">by</p>
         <img
@@ -30,16 +27,15 @@
     </div>
 
     <style>
-      /* Estilos para la página de bienvenida */
       body {
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
-        background-color: #e3f2fd; /* Fondo suave en azul claro */
+        background-color: #e3f2fd;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 100vh; /* Ajusta a la altura de la ventana */
+        height: 100vh;
       }
 
       .landing-container {
@@ -49,20 +45,18 @@
         justify-content: center;
         height: 80vh;
         text-align: center;
-        background-color: white; /* Fondo blanco para el contenido */
+        background-color: white;
         padding: 20px;
         border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
 
-      /* Estilos para el logotipo de la aplicación */
       .logo-app {
-        width: 70%; /* Ajusta el tamaño del logo para hacerlo más grande */
+        width: 70%;
         max-width: 400px;
-        margin-bottom: 10px; /* Reduce el margen entre el logo y el botón */
+        margin-bottom: 10px;
       }
 
-      /* Estilos para el botón de inicio */
       .inicio-button {
         padding: 10px 25px;
         font-size: 18px;
@@ -73,7 +67,7 @@
         cursor: pointer;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease, transform 0.2s;
-        margin-top: 10px; /* Espacio pequeño para separarlo del logo */
+        margin-top: 10px;
       }
 
       .inicio-button:hover {
@@ -81,7 +75,6 @@
         transform: scale(1.05);
       }
 
-      /* Contenedor para el texto 'by' y la imagen de creadores */
       .by-creators {
         display: flex;
         flex-direction: column;
@@ -89,21 +82,18 @@
         margin-top: 20px;
       }
 
-      /* Estilos para el texto 'by' */
       .by-text {
         font-size: 12px;
         color: #666666;
-        margin-bottom: -5px; /* Espacio para acercar el texto a la imagen */
+        margin-bottom: -5px;
       }
 
-      /* Estilos para la imagen de los creadores */
       .creadores {
         width: 70px;
         max-width: 100%;
         opacity: 0.7;
       }
 
-      /* Ajustes de responsividad */
       @media (max-width: 768px) {
         .landing-container {
           height: 90vh;
@@ -112,7 +102,7 @@
         }
 
         .logo-app {
-          width: 80%; /* Ajusta el tamaño del logo en pantallas pequeñas */
+          width: 80%;
         }
 
         .inicio-button {
